@@ -1,15 +1,23 @@
-FROM node:20-alpine
+FROM node:20
 
 WORKDIR /app
 
-# Install pnpm
 RUN corepack enable
 
-COPY . .
+# 👉 copier uniquement les fichiers nécessaires au lock
+COPY package.json pnpm-lock.yaml ./
+COPY apps ./apps
+COPY packages ./packages
 
-RUN pnpm install
+# install propre
+RUN pnpm install --frozen-lockfile
+
+# build uniquement le web
 RUN pnpm --filter web build
 
 EXPOSE 3000
 
-CMD ["pnpm", "--filter", "web", "exec", "next", "start", "-p", "3000", "-H", "0.0.0.0"]
+# 👉 IMPORTANT : lancer dans le bon package
+WORKDIR /app/apps/web
+
+CMD ["pnpm", "start"]
