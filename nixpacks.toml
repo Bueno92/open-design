@@ -1,2 +1,2 @@
 [start]
-cmd = "pnpm install && PORT=3000 HOST=0.0.0.0 pnpm tools-dev run web"
+cmd = "pnpm install && pnpm --filter web dev --hostname 0.0.0.0 --port 3000"
