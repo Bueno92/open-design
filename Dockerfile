@@ -1,4 +1,4 @@
-FROM node:20
+FROM ghcr.io/nodejs/node:20
 
 WORKDIR /app
 
