@@ -13,4 +13,4 @@ EXPOSE 3000
 
 WORKDIR /app/apps/web
 
-CMD ["pnpm", "--filter", "web", "exec", "next", "dev", "-H", "0.0.0.0", "-p", "3000"]
+CMD ["pnpm", "tools-dev", "run", "web"]
