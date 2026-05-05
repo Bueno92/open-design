@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM ghcr.io/nodejs/node:20-bookworm
 
 WORKDIR /app
 COPY . .
