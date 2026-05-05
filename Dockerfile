@@ -2,7 +2,6 @@ FROM node:local
 
 WORKDIR /app
 
-# 👉 installer pnpm proprement
 RUN npm install -g pnpm
 
 COPY . .
@@ -14,4 +13,4 @@ EXPOSE 3000
 
 WORKDIR /app/apps/web
 
-CMD ["pnpm", "start"]
+CMD ["pnpm", "exec", "next", "start", "-p", "3000", "-H", "0.0.0.0"]
